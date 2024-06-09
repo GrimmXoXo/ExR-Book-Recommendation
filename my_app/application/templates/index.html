@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br/><br/>
+            <h1>Welcome to the Book Recommender System</h1>
+            <br/>
+            <p>Discover your next favorite book!</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 text-center">
+            <h4><br/><br/><br/>
+                This recommender system has been built using Flask.<br/><br/>
+                We've curated a collection of amazing books from various genres just for you.<br/><br/>
+                Whether you're into fiction, non-fiction, romance, mystery, or sci-fi, we've got something for everyone.<br/><br/>
+                Explore our catalog, find your next read, and embark on a literary adventure today!
+            </h4>
+            <br/><br/>
+            <a href="{{ url_for('catalog') }}" class="btn btn-primary btn-lg">Explore Catalog</a>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

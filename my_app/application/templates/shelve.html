@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br/><h1>Rated Books</h1><br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table id="booktable" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Book Title</th>
+                        <th>Rating</th>
+                        <th>Author</th>
+                        <th>Genre</th>
+                        <th>Book Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for r in ratings %}
+                    <tr>
+                        <td> {{ r["Title"] }} </td>
+                        <td> {{ r["Rating"] }} </td>
+                        <td> {{ r["Author"] }} </td>
+                        <td> {{ r["Genre"] }} </td>
+                        <td><img src="{{ r['ImageURL'] }}" alt="Book Image" width="50" height="75"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

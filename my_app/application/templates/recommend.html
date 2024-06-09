@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br/><h1>Recommended Books</h1><br/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <!-- Search Form -->
+            <form method="POST" action="{{ url_for('recommend') }}">
+                <div class="input-group mb-3">
+                    <input type="text" name="book_title" class="form-control" placeholder="Enter Book Title" aria-label="Book Title" aria-describedby="button-search">
+                    <button class="btn btn-outline-secondary" type="submit" id="button-search">Search</button>
+                </div>
+            </form>
+
+            <!-- Replace "Your Recommendations" with search results -->
+            {% if search_results %}
+                <h2>Recommendations Based on Book Search</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Rating</th>
+                            <th>Genre</th>
+                            <th>Number of Reviews</th>
+                            <th>Book URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in search_results %}
+                            <tr>
+                                <td>{{ book.Title }}</td>
+                                <td>{{ book.Author }}</td>
+                                <td>{{ book.Rating }}</td>
+                                <td>{{ book.Genre }}</td>
+                                <td>{{ book.NumReviews }}</td>
+                                <td><img src="{{ book.ImageURL }}" alt="Book Cover" style="width: 50px; height: 75px;"></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h2>Your Recommendations</h2>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Book Title</th>
+                            <th>Author</th>
+                            <th>Rating</th>
+                            <th>Genre</th>
+                            <th>Number of Reviews</th>
+                            <th>Book URL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in recommendations %}
+                            <tr>
+                                <td>{{ book.Title }}</td>
+                                <td>{{ book.Author }}</td>
+                                <td>{{ book.Rating }}</td>
+                                <td>{{ book.Genre }}</td>
+                                <td>{{ book.NumReviews }}</td>
+                                <td><img src="{{ book.ImageURL }}" alt="Book Cover" style="width: 50px; height: 75px;"></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br/><h1>Login</h1><br/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="alert alert-{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <form name="login" action="{{ url_for('login') }}" method="post" novalidate>
+                <fieldset class="form-group">
+                    {{ form.hidden_tag() }}
+                    <p>
+                        {{ form.user_id.label }}: {{ form.user_id(size=50) }}
+                    </p>
+                    <p>
+                        {{ form.password.label }}: {{ form.password(size=20) }}
+                    </p>
+                    <p>
+                        {% for e_ in form.user_id.errors %}
+                        <span class="error-message">{{ e_ }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {% for e_ in form.password.errors %}
+                        <span class="error-message">{{ e_ }}</span>
+                        {% endfor %}
+                    </p>
+                    <p>
+                        {{ form.submit() }}
+                    </p>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+{% endblock %}

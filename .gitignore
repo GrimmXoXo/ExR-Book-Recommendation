@@ -1,0 +1,11 @@
+**/__pycache__/
+Book_recommendation.venv/*
+model_training/FINAL_DATA/*
+validation_test/*
+Scrape/*
+validation_test/
+*.db
+Kmeans_cluster_genres.xlsx
+book_ids_to_get
+*.env
+my_app/*
